@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jhansi Pinninti — Software Engineer & Data Analyst</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap');
+
+:root {
+  --navy: #050d1f;
+  --navy2: #0a1628;
+  --navy3: #0d1f3c;
+  --blue: #1a6bff;
+  --blue-light: #4a9eff;
+  --gold: #c9a84c;
+  --gold-light: #f0d080;
+  --white: #f0f4ff;
+  --white2: rgba(240,244,255,0.7);
+  --white3: rgba(240,244,255,0.35);
+  --white4: rgba(240,244,255,0.08);
+  --green: #00d48a;
+  --cyan: #00c8ff;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--navy);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--navy); }
+::-webkit-scrollbar-thumb { background: var(--blue); border-radius: 2px; }
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 20px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(5,13,31,0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(26,107,255,0.1);
+}
+
+.nav-logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px;
+  color: var(--white);
+  text-decoration: none;
+  letter-spacing: 0.5px;
+}
+
+.nav-logo span { color: var(--gold); }
+
+.nav-links { display: flex; gap: 36px; list-style: none; }
+.nav-links a {
+  color: var(--white3);
+  text-decoration: none;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--white); }
+
+.nav-cta {
+  padding: 8px 24px;
+  border: 1px solid var(--blue);
+  color: var(--blue-light) !important;
+  border-radius: 2px;
+  transition: all 0.3s !important;
+}
+.nav-cta:hover {
+  background: var(--blue) !important;
+  color: white !important;
+}
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 120px 60px 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 70% at 80% 50%, rgba(26,107,255,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 50% at 20% 80%, rgba(201,168,76,0.05) 0%, transparent 50%);
+}
+
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(26,107,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(26,107,255,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.hero-content { position: relative; z-index: 2; max-width: 700px; }
+
+.hero-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--gold);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.hero-tag::before {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.hero h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 80px;
+  line-height: 1.05;
+  color: var(--white);
+  margin-bottom: 8px;
+  letter-spacing: -1px;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(240,244,255,0.4);
+}
+
+.hero-subtitle {
+  font-size: 18px;
+  color: var(--white2);
+  margin-bottom: 40px;
+  line-height: 1.6;
+  max-width: 500px;
+}
+
+.hero-subtitle strong { color: var(--blue-light); font-weight: 500; }
+
+.hero-badges {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+
+.badge {
+  padding: 5px 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 1px;
+  border-radius: 2px;
+}
+
+.badge-blue {
+  background: rgba(26,107,255,0.15);
+  border: 1px solid rgba(26,107,255,0.3);
+  color: var(--blue-light);
+}
+
+.badge-gold {
+  background: rgba(201,168,76,0.12);
+  border: 1px solid rgba(201,168,76,0.3);
+  color: var(--gold-light);
+}
+
+.badge-green {
+  background: rgba(0,212,138,0.1);
+  border: 1px solid rgba(0,212,138,0.25);
+  color: var(--green);
+}
+
+.hero-actions { display: flex; gap: 16px; align-items: center; }
+
+.btn-primary {
+  padding: 14px 36px;
+  background: var(--blue);
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  border-radius: 2px;
+  transition: all 0.3s;
+  display: inline-block;
+}
+.btn-primary:hover { background: var(--blue-light); transform: translateY(-2px); }
+
+.btn-secondary {
+  padding: 14px 36px;
+  border: 1px solid rgba(240,244,255,0.2);
+  color: var(--white2);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  border-radius: 2px;
+  transition: all 0.3s;
+  display: inline-block;
+}
+.btn-secondary:hover { border-color: var(--white); color: var(--white); }
+
+/* Stats */
+.hero-stats {
+  position: absolute;
+  right: 60px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  z-index: 2;
+}
+
+.stat {
+  text-align: right;
+  border-right: 2px solid rgba(26,107,255,0.3);
+  padding-right: 20px;
+}
+
+.stat-number {
+  font-family: 'DM Serif Display', serif;
+  font-size: 42px;
+  color: var(--white);
+  line-height: 1;
+}
+
+.stat-number span { color: var(--blue-light); }
+
+.stat-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--white3);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* SECTIONS */
+section {
+  padding: 100px 60px;
+  position: relative;
+}
+
+.section-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--gold);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.section-tag::before {
+  content: '';
+  display: block;
+  width: 30px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.section-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 48px;
+  color: var(--white);
+  margin-bottom: 60px;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+}
+
+/* ABOUT */
+.about { background: var(--navy2); }
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.about-text p {
+  color: var(--white2);
+  font-size: 16px;
+  margin-bottom: 20px;
+  line-height: 1.8;
+}
+
+.about-text p strong { color: var(--white); font-weight: 500; }
+
+.about-info { display: flex; flex-direction: column; gap: 20px; }
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--white4);
+}
+
+.info-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--white3);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.info-value { color: var(--white); font-size: 14px; font-weight: 500; }
+.info-value.green { color: var(--green); }
+.info-value.gold { color: var(--gold-light); }
+
+/* SKILLS */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.skill-card {
+  background: var(--navy2);
+  border: 1px solid var(--white4);
+  padding: 32px;
+  border-radius: 4px;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(to right, var(--blue), transparent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s;
+}
+
+.skill-card:hover { border-color: rgba(26,107,255,0.3); transform: translateY(-4px); }
+.skill-card:hover::before { transform: scaleX(1); }
+
+.skill-icon {
+  font-size: 28px;
+  margin-bottom: 16px;
+}
+
+.skill-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 20px;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+
+.skill-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.skill-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  padding: 3px 8px;
+  background: var(--white4);
+  color: var(--white3);
+  border-radius: 2px;
+  letter-spacing: 0.5px;
+}
+
+/* EXPERIENCE */
+.experience { background: var(--navy2); }
+
+.exp-item {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 40px;
+  padding: 40px 0;
+  border-bottom: 1px solid var(--white4);
+  position: relative;
+}
+
+.exp-item:last-child { border-bottom: none; }
+
+.exp-meta {}
+
+.exp-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--gold);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.exp-company {
+  font-size: 13px;
+  color: var(--white3);
+  font-weight: 500;
+}
+
+.exp-content {}
+
+.exp-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 26px;
+  color: var(--white);
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.exp-desc {
+  color: var(--white2);
+  font-size: 15px;
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+.exp-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.exp-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  padding: 3px 10px;
+  border: 1px solid rgba(26,107,255,0.25);
+  color: var(--blue-light);
+  border-radius: 2px;
+  letter-spacing: 0.5px;
+}
+
+/* PROJECTS */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.project-card {
+  background: var(--navy2);
+  border: 1px solid var(--white4);
+  padding: 36px;
+  border-radius: 4px;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(to right, var(--gold), transparent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s;
+}
+
+.project-card:hover { border-color: rgba(201,168,76,0.2); transform: translateY(-4px); }
+.project-card:hover::after { transform: scaleX(1); }
+
+.project-number {
+  font-family: 'DM Serif Display', serif;
+  font-size: 64px;
+  color: var(--white4);
+  line-height: 1;
+  margin-bottom: 16px;
+}
+
+.project-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 24px;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+
+.project-period {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--gold);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.project-desc {
+  color: var(--white2);
+  font-size: 14px;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.project-highlight {
+  display: inline-block;
+  padding: 4px 12px;
+  background: rgba(0,212,138,0.1);
+  border: 1px solid rgba(0,212,138,0.2);
+  color: var(--green);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  border-radius: 2px;
+  margin-bottom: 16px;
+}
+
+.project-stack { display: flex; gap: 6px; flex-wrap: wrap; }
+.project-tech {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  padding: 3px 8px;
+  background: var(--white4);
+  color: var(--white3);
+  border-radius: 2px;
+}
+
+/* CERTIFICATIONS */
+.certs { background: var(--navy2); }
+
+.certs-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.cert-card {
+  padding: 28px 24px;
+  border: 1px solid var(--white4);
+  border-radius: 4px;
+  text-align: center;
+  transition: all 0.3s;
+  background: var(--navy3);
+}
+
+.cert-card:hover { border-color: rgba(201,168,76,0.3); transform: translateY(-3px); }
+
+.cert-icon { font-size: 32px; margin-bottom: 12px; }
+.cert-name { font-size: 13px; color: var(--white); font-weight: 500; line-height: 1.4; }
+.cert-org { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--gold); letter-spacing: 1px; margin-top: 6px; }
+
+/* CONTACT */
+.contact { text-align: center; }
+
+.contact-subtitle {
+  color: var(--white2);
+  font-size: 18px;
+  max-width: 500px;
+  margin: 0 auto 48px;
+  line-height: 1.7;
+}
+
+.contact-links {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  border: 1px solid var(--white4);
+  color: var(--white2);
+  text-decoration: none;
+  border-radius: 2px;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+
+.contact-link:hover { border-color: var(--blue); color: var(--white); background: rgba(26,107,255,0.1); }
+.contact-link span { font-size: 18px; }
+
+.contact-availability {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 28px;
+  background: rgba(0,212,138,0.08);
+  border: 1px solid rgba(0,212,138,0.2);
+  border-radius: 2px;
+  color: var(--green);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+.avail-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 8px var(--green);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(0.8); }
+}
+
+/* FOOTER */
+footer {
+  padding: 30px 60px;
+  border-top: 1px solid var(--white4);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--white3);
+  letter-spacing: 1px;
+}
+
+/* ANIMATIONS */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.7s ease;
+}
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* Divider line */
+.divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--white4), transparent);
+  margin: 0;
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">JP<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact" class="nav-cta">Hire Me</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+
+  <div class="hero-content">
+    <div class="hero-tag">Available for Work</div>
+    <h1>Jhansi<br><em>Pinninti</em></h1>
+    <p class="hero-subtitle">
+      <strong>Software Engineer & Data Analyst</strong> with expertise in Java, Python, SQL, Angular, React, and AWS. Currently building at Arrays Global.
+    </p>
+    <div class="hero-badges">
+      <span class="badge badge-gold">☁️ AWS Certified</span>
+      <span class="badge badge-blue">M.S. Information Technology</span>
+      <span class="badge badge-blue">GPA 3.67</span>
+      <span class="badge badge-green">✓ OPT · STEM Extension</span>
+    </div>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Get In Touch</a>
+      <a href="#projects" class="btn-secondary">View Projects</a>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-number">3.<span>67</span></div>
+      <div class="stat-label">GPA Score</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number"><span>4</span>+</div>
+      <div class="stat-label">Projects Built</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number"><span>10</span>+</div>
+      <div class="stat-label">Technologies</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-tag">About Me</div>
+  <div class="section-title">Passionate about building<br>real-world solutions</div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I am a <strong>Full Stack Software Engineer and Data Analyst</strong> based in Chicago, IL. I hold a M.S. in Information Technology from Arkansas Tech University (GPA: 3.67) and am currently working as a Software Engineer at <strong>Arrays Global</strong>.</p>
+      <p>I specialize in building enterprise web applications using <strong>Java, Spring Boot, Angular, and React</strong>, designing and optimizing databases with <strong>SQL, PostgreSQL, and Oracle</strong>, and developing data pipelines and analytical systems with <strong>Python</strong>.</p>
+      <p>I am <strong>AWS Certified</strong>, experienced with Docker and CI/CD pipelines, and passionate about clean, maintainable code that solves real problems. I thrive in Agile team environments and love mentoring others.</p>
+    </div>
+    <div class="about-info">
+      <div class="info-item">
+        <span class="info-label">Status</span>
+        <span class="info-value green">✓ Available Immediately</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">Location</span>
+        <span class="info-value">Chicago, IL — Open to USA</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">Work Auth</span>
+        <span class="info-value gold">OPT · STEM Extension</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">Education</span>
+        <span class="info-value">M.S. IT — Arkansas Tech</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">Certification</span>
+        <span class="info-value gold">AWS Certified Cloud Practitioner</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">Email</span>
+        <span class="info-value">pjhansi137@gmail.com</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">Phone</span>
+        <span class="info-value">(463) 269-7869</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-tag">Technical Skills</div>
+  <div class="section-title">What I work with</div>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-icon">☕</div>
+      <div class="skill-title">Backend Development</div>
+      <div class="skill-items">
+        <span class="skill-tag">Java</span>
+        <span class="skill-tag">Spring Boot</span>
+        <span class="skill-tag">Spring MVC</span>
+        <span class="skill-tag">Hibernate</span>
+        <span class="skill-tag">JUnit</span>
+        <span class="skill-tag">RESTful APIs</span>
+        <span class="skill-tag">Microservices</span>
+        <span class="skill-tag">C#</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🌐</div>
+      <div class="skill-title">Frontend Development</div>
+      <div class="skill-items">
+        <span class="skill-tag">Angular</span>
+        <span class="skill-tag">React</span>
+        <span class="skill-tag">Redux</span>
+        <span class="skill-tag">TypeScript</span>
+        <span class="skill-tag">JavaScript</span>
+        <span class="skill-tag">HTML5</span>
+        <span class="skill-tag">CSS3</span>
+        <span class="skill-tag">Bootstrap</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🗄️</div>
+      <div class="skill-title">Databases</div>
+      <div class="skill-items">
+        <span class="skill-tag">PostgreSQL</span>
+        <span class="skill-tag">MySQL</span>
+        <span class="skill-tag">Oracle</span>
+        <span class="skill-tag">SQL Server</span>
+        <span class="skill-tag">Schema Design</span>
+        <span class="skill-tag">Stored Procedures</span>
+        <span class="skill-tag">Query Optimization</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🐍</div>
+      <div class="skill-title">Python & Data</div>
+      <div class="skill-items">
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">Data Pipelines</span>
+        <span class="skill-tag">Data Analysis</span>
+        <span class="skill-tag">Statistical Analysis</span>
+        <span class="skill-tag">Anomaly Detection</span>
+        <span class="skill-tag">Dashboards</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">☁️</div>
+      <div class="skill-title">Cloud & DevOps</div>
+      <div class="skill-items">
+        <span class="skill-tag">AWS (Certified)</span>
+        <span class="skill-tag">Azure</span>
+        <span class="skill-tag">Docker</span>
+        <span class="skill-tag">Jenkins CI/CD</span>
+        <span class="skill-tag">Git</span>
+        <span class="skill-tag">Maven</span>
+        <span class="skill-tag">IBM Cloud</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">⚙️</div>
+      <div class="skill-title">Practices & Methods</div>
+      <div class="skill-items">
+        <span class="skill-tag">Agile/Scrum</span>
+        <span class="skill-tag">RBAC</span>
+        <span class="skill-tag">SAML Auth</span>
+        <span class="skill-tag">WCAG 2.1</span>
+        <span class="skill-tag">NIST Framework</span>
+        <span class="skill-tag">OOP Design Patterns</span>
+        <span class="skill-tag">Technical Docs</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EXPERIENCE -->
+<section class="experience" id="experience">
+  <div class="section-tag">Experience</div>
+  <div class="section-title">Where I've worked</div>
+
+  <div class="exp-item">
+    <div class="exp-meta">
+      <div class="exp-date">Sep 2025 — Present</div>
+      <div class="exp-company">Arrays Global · Chicago, IL</div>
+    </div>
+    <div class="exp-content">
+      <div class="exp-title">Software Engineer</div>
+      <p class="exp-desc">Designing, developing, and maintaining enterprise Java Spring Boot applications and RESTful APIs. Building Angular and React frontend components, optimizing SQL databases across PostgreSQL, MySQL, and Oracle, developing Python data pipelines, and deploying on AWS using Docker and Jenkins CI/CD. Working in Agile/Scrum sprints delivering quality software on schedule.</p>
+      <div class="exp-tags">
+        <span class="exp-tag">Java</span>
+        <span class="exp-tag">Spring Boot</span>
+        <span class="exp-tag">Angular</span>
+        <span class="exp-tag">Python</span>
+        <span class="exp-tag">PostgreSQL</span>
+        <span class="exp-tag">AWS</span>
+        <span class="exp-tag">Docker</span>
+        <span class="exp-tag">CI/CD</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="exp-item">
+    <div class="exp-meta">
+      <div class="exp-date">Aug 2023 — May 2025</div>
+      <div class="exp-company">Arkansas Tech University</div>
+    </div>
+    <div class="exp-content">
+      <div class="exp-title">Graduate Student & Project Team Lead</div>
+      <p class="exp-desc">Led multiple 4-6 member Agile project teams through full software development lifecycles. Mentored teammates on Java, Spring Boot, Angular, Python, and database best practices. Conducted code reviews and facilitated Scrum ceremonies. Delivered 4 major technical projects covering full stack development, cloud security, data analysis, and ERP simulation.</p>
+      <div class="exp-tags">
+        <span class="exp-tag">Team Lead</span>
+        <span class="exp-tag">Agile/Scrum</span>
+        <span class="exp-tag">Mentoring</span>
+        <span class="exp-tag">Full Stack</span>
+        <span class="exp-tag">Cloud</span>
+        <span class="exp-tag">Data Analysis</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-tag">Projects</div>
+  <div class="section-title">What I've built</div>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="project-number">01</div>
+      <div class="project-period">Jan – May 2025</div>
+      <div class="project-title">Secure Enterprise Portal</div>
+      <div class="project-highlight">✓ Capstone Project — Team Lead</div>
+      <p class="project-desc">Full stack enterprise web portal with Java, Spring Boot, Angular, RESTful microservices, RBAC, SAML authentication, and WCAG 2.1 accessibility. Deployed on AWS with Docker and Jenkins CI/CD. Led 4-member Agile team through complete SDLC.</p>
+      <div class="project-stack">
+        <span class="project-tech">Java</span>
+        <span class="project-tech">Spring Boot</span>
+        <span class="project-tech">Angular</span>
+        <span class="project-tech">AWS</span>
+        <span class="project-tech">Docker</span>
+        <span class="project-tech">PostgreSQL</span>
+        <span class="project-tech">Oracle</span>
+        <span class="project-tech">Jenkins</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-number">02</div>
+      <div class="project-period">Jan – May 2024</div>
+      <div class="project-title">Network Intrusion Detection System</div>
+      <div class="project-highlight">✓ 92% Detection Accuracy</div>
+      <p class="project-desc">Real-time Python-based intrusion detection system with live data pipeline engineering, statistical pattern recognition, and anomaly detection. MySQL database with complex query optimization and interactive dashboards.</p>
+      <div class="project-stack">
+        <span class="project-tech">Python</span>
+        <span class="project-tech">MySQL</span>
+        <span class="project-tech">Data Pipelines</span>
+        <span class="project-tech">Statistical Analysis</span>
+        <span class="project-tech">Dashboards</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-number">03</div>
+      <div class="project-period">Sep – Dec 2024</div>
+      <div class="project-title">Cloud Infrastructure Security Assessment</div>
+      <div class="project-highlight">✓ 60% Attack Surface Reduction</div>
+      <p class="project-desc">Comprehensive AWS hybrid cloud security assessment using NIST framework. Implemented VPC segmentation, IAM redesign, and MFA — reducing simulated attack surface by 60%. Full architecture and remediation documentation.</p>
+      <div class="project-stack">
+        <span class="project-tech">AWS</span>
+        <span class="project-tech">VPC</span>
+        <span class="project-tech">IAM</span>
+        <span class="project-tech">NIST</span>
+        <span class="project-tech">Cloud Security</span>
+        <span class="project-tech">MFA</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-number">04</div>
+      <div class="project-period">Aug – Dec 2023</div>
+      <div class="project-title">ERP Implementation Simulation</div>
+      <div class="project-highlight">✓ Scrum Master — 6 Member Team</div>
+      <p class="project-desc">Led a 6-member cross-functional Agile team through a full ERP rollout simulation. Delivered complete documentation including WBS, risk register, resource plan, and UML diagrams — all milestones delivered on schedule.</p>
+      <div class="project-stack">
+        <span class="project-tech">Agile</span>
+        <span class="project-tech">Scrum</span>
+        <span class="project-tech">UML</span>
+        <span class="project-tech">WBS</span>
+        <span class="project-tech">Risk Management</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CERTIFICATIONS -->
+<section class="certs" id="certs">
+  <div class="section-tag">Certifications</div>
+  <div class="section-title">Credentials</div>
+  <div class="certs-grid">
+    <div class="cert-card">
+      <div class="cert-icon">☁️</div>
+      <div class="cert-name">AWS Certified Cloud Practitioner</div>
+      <div class="cert-org">Amazon Web Services</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🗄️</div>
+      <div class="cert-name">SQL Certification</div>
+      <div class="cert-org">Database Programming</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">☕</div>
+      <div class="cert-name">Java Programming Certification</div>
+      <div class="cert-org">Java Development</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🌐</div>
+      <div class="cert-name">Web Design & Development</div>
+      <div class="cert-org">Frontend & Web Tech</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-tag" style="justify-content:center;">Contact</div>
+  <div class="section-title" style="text-align:center;">Let's work together</div>
+  <p class="contact-subtitle">I am actively looking for new opportunities. Whether you have a job opening, a project, or just want to connect — my inbox is always open!</p>
+  <div class="contact-links">
+    <a href="mailto:pjhansi137@gmail.com" class="contact-link">
+      <span>✉️</span> pjhansi137@gmail.com
+    </a>
+    <a href="tel:4632697869" class="contact-link">
+      <span>📱</span> (463) 269-7869
+    </a>
+    <a href="https://www.linkedin.com/in/jhansi-pinninti-a3a35b36a/" target="_blank" class="contact-link">
+      <span>💼</span> LinkedIn Profile
+    </a>
+  </div>
+  <div class="contact-availability">
+    <div class="avail-dot"></div>
+    AVAILABLE IMMEDIATELY · OPT · STEM EXTENSION ELIGIBLE · H1B WELCOME
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-text">© 2026 Jhansi Pinninti · Software Engineer & Data Analyst</div>
+  <div class="footer-text">Chicago, IL · Open to All U.S. Locations</div>
+</footer>
+
+<script>
+// Fade in animations on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.skill-card, .project-card, .cert-card, .exp-item').forEach(el => {
+  el.classList.add('fade-in');
+  observer.observe(el);
+});
+
+// Smooth active nav
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  if (window.scrollY > 50) {
+    nav.style.borderBottomColor = 'rgba(26,107,255,0.2)';
+  } else {
+    nav.style.borderBottomColor = 'rgba(26,107,255,0.1)';
+  }
+});
+</script>
+
+</body>
+</html>
