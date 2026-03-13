@@ -39,6 +39,15 @@ a { text-decoration: none; }
 ::-webkit-scrollbar-track { background: var(--navy); }
 ::-webkit-scrollbar-thumb { background: var(--blue); border-radius: 2px; }
 
+/* ── DOTS CANVAS ── */
+#dotsCanvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
 /* ── NAV ───────────────────────────── */
 nav {
   position: fixed;
@@ -606,6 +615,7 @@ footer {
 </style>
 </head>
 <body>
+<canvas id="dotsCanvas"></canvas>
 
 <!-- NAV -->
 <nav id="navbar">
@@ -940,6 +950,125 @@ footer {
 </footer>
 
 <script>
+// ── Animated Dots Background ──────────────────────────────
+const canvas = document.getElementById('dotsCanvas');
+const ctx    = canvas.getContext('2d');
+let W, H, dots = [], mouse = { x: -999, y: -999 };
+
+const COLORS = ['rgba(26,107,255,', 'rgba(90,158,255,', 'rgba(201,168,76,', 'rgba(0,212,138,', 'rgba(0,200,255,'];
+const DOT_COUNT = () => Math.floor((W * H) / 9000);
+const MAX_DIST  = 130;
+
+function resize() {
+  W = canvas.width  = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+  initDots();
+}
+
+function randColor() { return COLORS[Math.floor(Math.random() * COLORS.length)]; }
+
+function initDots() {
+  dots = [];
+  const n = DOT_COUNT();
+  for (let i = 0; i < n; i++) {
+    dots.push({
+      x: Math.random() * W,
+      y: Math.random() * H,
+      r: Math.random() * 2 + 0.8,
+      vx: (Math.random() - 0.5) * 0.4,
+      vy: (Math.random() - 0.5) * 0.4,
+      alpha: Math.random() * 0.5 + 0.2,
+      color: randColor()
+    });
+  }
+}
+
+function draw() {
+  ctx.clearRect(0, 0, W, H);
+
+  // Draw connecting lines
+  for (let i = 0; i < dots.length; i++) {
+    for (let j = i + 1; j < dots.length; j++) {
+      const dx = dots[i].x - dots[j].x;
+      const dy = dots[i].y - dots[j].y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < MAX_DIST) {
+        const opacity = (1 - dist / MAX_DIST) * 0.15;
+        ctx.beginPath();
+        ctx.strokeStyle = `rgba(26,107,255,${opacity})`;
+        ctx.lineWidth = 0.5;
+        ctx.moveTo(dots[i].x, dots[i].y);
+        ctx.lineTo(dots[j].x, dots[j].y);
+        ctx.stroke();
+      }
+    }
+
+    // Mouse interaction — attract nearby dots
+    const mdx = dots[i].x - mouse.x;
+    const mdy = dots[i].y - mouse.y;
+    const mdist = Math.sqrt(mdx * mdx + mdy * mdy);
+    if (mdist < 160) {
+      const force = (160 - mdist) / 160 * 0.012;
+      dots[i].vx -= mdx * force;
+      dots[i].vy -= mdy * force;
+      // Draw line to mouse
+      const mo = (1 - mdist / 160) * 0.35;
+      ctx.beginPath();
+      ctx.strokeStyle = `rgba(26,107,255,${mo})`;
+      ctx.lineWidth = 0.8;
+      ctx.moveTo(dots[i].x, dots[i].y);
+      ctx.lineTo(mouse.x, mouse.y);
+      ctx.stroke();
+    }
+  }
+
+  // Draw dots
+  for (const d of dots) {
+    // Move
+    d.x += d.vx;
+    d.y += d.vy;
+    // Speed limit
+    const spd = Math.sqrt(d.vx*d.vx + d.vy*d.vy);
+    if (spd > 1.2) { d.vx *= 0.95; d.vy *= 0.95; }
+    // Slow drift damping
+    d.vx *= 0.999; d.vy *= 0.999;
+    // Drift nudge
+    d.vx += (Math.random() - 0.5) * 0.02;
+    d.vy += (Math.random() - 0.5) * 0.02;
+    // Wrap edges
+    if (d.x < 0) d.x = W; if (d.x > W) d.x = 0;
+    if (d.y < 0) d.y = H; if (d.y > H) d.y = 0;
+
+    // Pulse alpha
+    d.alpha += (Math.random() - 0.5) * 0.008;
+    d.alpha  = Math.max(0.1, Math.min(0.75, d.alpha));
+
+    // Draw dot with glow
+    ctx.beginPath();
+    ctx.arc(d.x, d.y, d.r * 1.8, 0, Math.PI * 2);
+    ctx.fillStyle = d.color + '0.04)';
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
+    ctx.fillStyle = d.color + d.alpha + ')';
+    ctx.fill();
+  }
+
+  requestAnimationFrame(draw);
+}
+
+window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+window.addEventListener('touchmove', e => {
+  mouse.x = e.touches[0].clientX;
+  mouse.y = e.touches[0].clientY;
+}, { passive: true });
+window.addEventListener('mouseleave', () => { mouse.x = -999; mouse.y = -999; });
+window.addEventListener('resize', resize);
+
+resize();
+draw();
+
 // ── Hamburger toggle
 function toggleMenu() {
   const ham  = document.getElementById('ham');
@@ -964,4 +1093,3 @@ document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
 </script>
 </body>
 </html>
-
